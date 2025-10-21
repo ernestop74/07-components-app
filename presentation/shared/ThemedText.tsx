@@ -22,13 +22,12 @@ const TEXT_VALUE_DEFAULT = TEXT_VALUES.normal;
 const ThemedText = ({
     className,
     type,
-    children,
     ...rest
 }: Props) => {
     // className='mt-20 text-3xl font-bold text-light-text dark:text-dark-text'
 //    const marginTop = 'mt-20'
     const temaLigero = 'text-light-text'
-    const temaOscuro = 'text-dark-text'
+    const temaOscuro = 'dark:text-dark-text'
     const tipo = type ? TEXT_VALUES[type] : TEXT_VALUE_DEFAULT
 
   return (
@@ -40,9 +39,7 @@ const ThemedText = ({
         className
       ].join(' ')}
       {...rest}      
-    >
-      { children }
-    </Text>
+    />
   )
 }
 
