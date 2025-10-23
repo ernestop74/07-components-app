@@ -1,46 +1,36 @@
-import React from 'react';
 import { Text, TextProps } from 'react-native';
 
-type TextType = 'h1' | 'h2' | 'normal' | 'semi-bold' | 'link'
+type TextType = 'normal' | 'h1' | 'h2' | 'semi-bold' | 'link';
 
-interface Props extends TextProps{
+/*
+font-normal
+text-3xl
+text-xl
+
+font-bold
+font-normal underline
+*/
+
+interface Props extends TextProps {
   className?: string;
   type?: TextType;
 }
 
-const TEXT_VALUES = {
-    h1: 'text-3xl',
-    h2: 'text-xl',
-    normal: 'font-normal',
-    'semi-bold': 'font-semibold',
-    link: 'font-bold underline'
-}
-
-const TEXT_VALUE_DEFAULT = TEXT_VALUES.normal;
-
-
-const ThemedText = ({
-    className,
-    type,
-    ...rest
-}: Props) => {
-    // className='mt-20 text-3xl font-bold text-light-text dark:text-dark-text'
-//    const marginTop = 'mt-20'
-    const temaLigero = 'text-light-text'
-    const temaOscuro = 'dark:text-dark-text'
-    const tipo = type ? TEXT_VALUES[type] : TEXT_VALUE_DEFAULT
-
+const ThemedText = ({ className, type, ...rest }: Props) => {
+  //  className="mt-10 text-3xl text-light-text dark:text-dark-text"
   return (
     <Text
       className={[
-        temaLigero,
-        temaOscuro,
-        tipo,
-        className
+        'text-light-text dark:text-dark-text',
+        type === 'normal' ? 'font-normal' : undefined,
+        type === 'h1' ? 'text-3xl' : undefined,
+        type === 'h2' ? 'text-xl' : undefined,
+        type === 'semi-bold' ? 'font-semibold' : undefined,
+        type === 'link' ? 'font-normal underline' : undefined,
+        className,
       ].join(' ')}
-      {...rest}      
+      {...rest}
     />
-  )
-}
-
-export default ThemedText
+  );
+};
+export default ThemedText;

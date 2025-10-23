@@ -8,12 +8,20 @@ const ModalLayout = () => {
       }}
     >
       <Stack.Screen name="index" />
+      
       <Stack.Screen
         name="modal-windows"
         options={{
           presentation: 'modal',
         }}
       />
+
+      <Stack.Screen
+        name="modal-windows-2"
+        options={{
+          presentation: 'modal',
+        }}
+      />      
     </Stack>
   )
 }
